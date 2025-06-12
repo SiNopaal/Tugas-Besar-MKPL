@@ -39,6 +39,8 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # penting agar bisa tagging
 
       - name: Set up Java
         uses: actions/setup-java@v3
@@ -52,6 +54,9 @@ jobs:
       - name: Upload release artifact (Continuous Delivery)
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ github.run_number }}
+          name: Release v${{ github.run_number }}
           files: target/*.jar
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
