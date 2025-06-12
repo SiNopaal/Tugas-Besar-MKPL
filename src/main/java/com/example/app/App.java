@@ -3,7 +3,7 @@ package com.example.app;
 /**
  * Kelas utama untuk menjalankan aplikasi.
  */
-public class App {
+public final class App {
 
     // Private constructor to prevent instantiation
     private App() {
