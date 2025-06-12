@@ -5,13 +5,20 @@ package com.example.app;
  */
 public class App {
 
+    // Private constructor to prevent instantiation
+    private App() {
+        // Utility class
+    }
+
     /**
      * Entry point aplikasi.
      *
      * @param args parameter dari command line
      */
     public static void main(final String[] args) {
-        System.out.println(add(2, 3));
+        final int x = 2;
+        final int y = 3;
+        System.out.println(add(x, y));
     }
 
     /**
