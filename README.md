@@ -63,24 +63,26 @@ Proyek ini merupakan implementasi pipeline **CI/CD** menggunakan **GitHub Action
 
 ## 📁 Struktur Proyek
 
-- Tubes-Kretek-Java/
-  - src/
-    - main/
-      - java/
-        - com/
-          - example/
-            - app/
-              - App.java
-    - test/
-      - java/
-        - com/
-          - example/
-            - app/
-              - AppTest.java
-  - pom.xml
-  - .github/
-    - workflows/
-      - java-ci-cd.yml
+```plaintext
+Tubes-Kretek-Java/
+├── src/
+│   ├── main/
+│   │   └── java/com/example/app/
+│   │       ├── App.java
+│   │       └── package-info.java
+│   └── test/
+│       └── java/com/example/app/
+│           └── AppTest.java
+├── target/
+│   ├── classes/com/example/app/
+│   │   └── App.class
+│   └── test-classes/com/example/app/
+│       └── AppTest.class
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+├── pom.xml
+└── README.md
 
 ---
 
