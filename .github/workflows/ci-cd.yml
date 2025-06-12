@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write  # ➕ wajib agar bisa bikin release
+
 jobs:
   build:
     name: Build & Test & Inspect
