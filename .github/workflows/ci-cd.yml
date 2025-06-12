@@ -1,0 +1,57 @@
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build & Test & Inspect
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven (Putra Pratama Okta Riano - Continuous Integration)
+        run: mvn clean install
+
+      - name: Run Unit Tests (Allaya Daffa Zhillal - Continuous Testing)
+        run: mvn test
+
+      - name: Static Code Inspection with Checkstyle (Naufal Maulana Izzuddin - Continuous Inspection)
+        run: mvn checkstyle:check
+
+  deploy:
+    name: Deploy JAR to GitHub Releases
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build the project
+        run: mvn package
+
+      - name: Upload release artifact (Continuous Delivery)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
